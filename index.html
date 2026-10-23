@@ -1,0 +1,1118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#180d1b">
+<title>For Princyy 🎀</title>
+
+<style>
+:root {
+  --bg:#180d1b;
+  --pink:#ff8eb8;
+  --rose:#e65c91;
+  --lav:#c6a8ff;
+  --text:#fff0f6;
+  --muted:#c9aaba;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  min-height:100vh;
+  font-family:"Trebuchet MS",sans-serif;
+  background:
+    radial-gradient(ellipse at 10% 10%,#62254655,transparent 45%),
+    radial-gradient(ellipse at 90% 80%,#49306a55,transparent 45%),
+    var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+button,textarea { font:inherit; }
+button { cursor:pointer; touch-action:manipulation; }
+
+#hearts,#partyLayer {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:100;
+}
+.progress {
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  width:0;
+  background:linear-gradient(90deg,var(--pink),var(--lav));
+  z-index:150;
+  transition:width .4s;
+}
+.music {
+  position:fixed;
+  top:14px;
+  right:12px;
+  z-index:160;
+  border:1px solid #ff8eb855;
+  border-radius:30px;
+  padding:10px 13px;
+  background:#281629ed;
+  color:white;
+}
+main { position:relative; z-index:1; }
+.slide {
+  display:none;
+  min-height:100vh;
+  min-height:100svh;
+  padding:85px 18px 35px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.slide.active {
+  display:flex;
+  animation:slideIn .6s ease both;
+}
+@keyframes slideIn {
+  from { opacity:0; transform:translateY(18px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.content { width:100%; max-width:740px; margin:auto; }
+.tag {
+  display:inline-block;
+  border:1px solid #ffb6d233;
+  background:#ffffff09;
+  border-radius:30px;
+  padding:9px 15px;
+  margin-bottom:20px;
+  font-size:.76rem;
+  letter-spacing:2px;
+  color:#ffb5d1;
+}
+h1,h2 {
+  color:var(--pink);
+  line-height:1.18;
+  margin-bottom:18px;
+}
+h1 { font-size:clamp(2.4rem,9vw,4.8rem); }
+h2 { font-size:clamp(1.8rem,6vw,3rem); }
+p {
+  font-size:1rem;
+  line-height:1.85;
+  margin:13px auto;
+  max-width:590px;
+}
+.subtitle,.small { color:var(--muted); }
+.small { font-size:.82rem; }
+.glow { text-shadow:0 0 28px #ff8eb855; }
+.heart-big {
+  font-size:4rem;
+  display:block;
+  margin-bottom:12px;
+  animation:pulse 1.6s infinite;
+}
+@keyframes pulse { 50% { transform:scale(1.13); } }
+.btnrow {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:25px;
+}
+.btn {
+  border:1px solid #ff9fc255;
+  border-radius:30px;
+  padding:13px 22px;
+  color:white;
+  background:#ffffff0c;
+  transition:.2s;
+}
+.btn:active { transform:scale(.97); }
+.btn.primary {
+  background:linear-gradient(135deg,#ff8eb8,#bd477f);
+  border:0;
+  box-shadow:0 7px 30px #e65c9133;
+}
+.btn.secondary { border-color:#d8a4c866; }
+.btn:hover { box-shadow:0 0 25px #ff8eb833; }
+.btn:disabled { opacity:.55; cursor:not-allowed; }
+.card {
+  margin:20px auto;
+  padding:25px;
+  border:1px solid #ffffff16;
+  border-radius:24px;
+  background:linear-gradient(145deg,#ffffff0c,#ffffff04);
+  box-shadow:0 15px 45px #0002;
+  backdrop-filter:blur(12px);
+}
+.hidden { display:none!important; }
+
+#choiceArea {
+  position:relative;
+  min-height:90px;
+  margin:24px auto;
+  max-width:400px;
+}
+#noBtn { position:relative; }
+
+.photo-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:17px;
+  margin:24px auto;
+  max-width:590px;
+}
+.polaroid {
+  background:#f9eaf1;
+  color:#63324b;
+  padding:9px 9px 14px;
+  border-radius:5px;
+  box-shadow:0 12px 28px #0004;
+  transform:rotate(-2deg);
+  animation:photoIn .7s both;
+}
+.polaroid:nth-child(even) { transform:rotate(2deg); }
+@keyframes photoIn {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; }
+}
+.polaroid img {
+  display:block;
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  background:#392136;
+  border-radius:3px;
+}
+.caption {
+  font-family:Georgia,serif;
+  font-size:.95rem;
+  margin-top:10px;
+}
+.video-frame {
+  background:#2a1829;
+  padding:10px;
+  border:1px solid #ffb6d233;
+  border-radius:18px;
+  max-width:540px;
+  margin:25px auto;
+}
+.video-frame video {
+  display:block;
+  width:100%;
+  max-height:62vh;
+  border-radius:10px;
+  background:#09070a;
+}
+.video-caption { padding-top:8px; color:#e9bfd2; }
+.note { font-size:.8rem; color:var(--muted); }
+
+/* Cute cats */
+.cats {
+  display:flex;
+  justify-content:center;
+  align-items:end;
+  gap:45px;
+  margin:40px auto 28px;
+}
+.cat {
+  position:relative;
+  width:112px;
+  height:91px;
+  border-radius:48% 48% 42% 42%;
+  background:#f7eaf0;
+  box-shadow:inset -7px -6px 0 #dfc5d4,0 10px 30px #0003;
+  animation:catDance 2s ease-in-out infinite;
+}
+.cat.pink {
+  background:#f1a8c6;
+  box-shadow:inset -7px -6px 0 #ce7ea3,0 10px 30px #0003;
+  animation-delay:.4s;
+}
+.ear {
+  position:absolute;
+  top:-20px;
+  width:36px;
+  height:44px;
+  background:inherit;
+  clip-path:polygon(0 100%,15% 0,100% 70%,100% 100%);
+}
+.ear.left { left:8px; }
+.ear.right { right:8px; transform:scaleX(-1); }
+.eye {
+  position:absolute;
+  top:39px;
+  width:7px;
+  height:11px;
+  border-radius:50%;
+  background:#422439;
+}
+.eye.left { left:32px; }
+.eye.right { right:32px; }
+.nose {
+  position:absolute;
+  top:54px;
+  left:51px;
+  width:10px;
+  height:7px;
+  background:#e978a5;
+  clip-path:polygon(50% 100%,0 0,100% 0);
+}
+.mouth {
+  position:absolute;
+  top:60px;
+  left:48px;
+  width:16px;
+  height:9px;
+  border-bottom:2px solid #765064;
+  border-radius:50%;
+}
+.whiskers {
+  position:absolute;
+  top:55px;
+  left:-7px;
+  width:31px;
+  height:15px;
+  border-top:1px solid #c6a8b8;
+  transform:rotate(8deg);
+}
+.whiskers.right {
+  left:auto;
+  right:-7px;
+  transform:rotate(-8deg);
+}
+.bow {
+  position:absolute;
+  top:-22px;
+  left:42px;
+  color:#ff6fa8;
+  font-size:25px;
+}
+@keyframes catDance {
+  0%,100% { transform:translateY(0) rotate(-3deg); }
+  50% { transform:translateY(-12px) rotate(4deg); }
+}
+
+/* Birthday pets */
+.birthday-scene {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:clamp(15px,5vw,45px);
+  margin:25px auto 5px;
+}
+.birthday-pet {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+  animation:petDance 1.5s ease-in-out infinite;
+}
+.birthday-pet span {
+  display:block;
+  font-size:clamp(2.8rem,10vw,4.4rem);
+  filter:drop-shadow(0 8px 10px #0003);
+}
+.birthday-pet small {
+  color:#ffb5d1;
+  font-size:.75rem;
+  white-space:nowrap;
+}
+.panda-pet { animation-delay:.25s; }
+.dog-pet { animation-delay:.5s; }
+@keyframes petDance {
+  0%,100% { transform:translateY(0) rotate(-5deg); }
+  50% { transform:translateY(-14px) rotate(5deg); }
+}
+
+/* Countdown */
+.countdown {
+  font-size:3.2rem;
+  font-weight:bold;
+  color:var(--pink);
+  min-height:65px;
+  text-shadow:0 0 25px #ff8eb855;
+  animation:pulse 1s infinite;
+}
+
+/* Cake */
+.cake {
+  position:relative;
+  width:250px;
+  height:205px;
+  margin:10px auto 18px;
+  filter:drop-shadow(0 10px 12px #0002);
+}
+.cake-plate {
+  position:absolute;
+  bottom:5px;
+  left:5px;
+  width:240px;
+  height:18px;
+  border-radius:50%;
+  background:linear-gradient(#ffe6f0,#d887ad);
+  box-shadow:0 6px 0 #9e3c6c;
+}
+.cakebase {
+  position:absolute;
+  bottom:23px;
+  left:25px;
+  width:200px;
+  height:85px;
+  border-radius:13px 13px 18px 18px;
+  background:linear-gradient(
+    to bottom,
+    #fff0f6 0 13%,
+    #ffb7d0 13% 31%,
+    #e65c91 31% 100%
+  );
+  box-shadow:inset -8px -5px 0 #b84478;
+}
+.cakebase:before {
+  content:"";
+  position:absolute;
+  top:-22px;
+  left:0;
+  width:200px;
+  height:42px;
+  border-radius:50%;
+  background:#ffeaf2;
+  border:3px solid #ffb7d0;
+}
+.cakebase:after {
+  content:"♥  ♥  ♥";
+  position:absolute;
+  top:43px;
+  width:100%;
+  text-align:center;
+  color:white;
+  font-size:20px;
+  letter-spacing:7px;
+}
+.candle {
+  position:absolute;
+  z-index:3;
+  bottom:130px;
+  left:118px;
+  width:14px;
+  height:48px;
+  border-radius:4px;
+  background:repeating-linear-gradient(
+    45deg,#fff 0 5px,#ff83b2 5px 10px
+  );
+  box-shadow:0 0 7px #ff8eb833;
+}
+.flame {
+  position:absolute;
+  top:-25px;
+  left:-2px;
+  width:18px;
+  height:25px;
+  background:#ffce64;
+  border-radius:50% 50% 45% 45%;
+  box-shadow:0 0 25px #ffbd4a;
+  animation:flicker .3s infinite alternate;
+}
+.flame.off { display:none; }
+@keyframes flicker {
+  to { transform:rotate(6deg) scale(1.1); }
+}
+
+/* Wish box */
+#wishInput {
+  display:block;
+  width:100%;
+  max-width:520px;
+  min-height:130px;
+  margin:20px auto;
+  padding:15px;
+  border-radius:16px;
+  border:1px solid #ff8eb855;
+  background:#170d19;
+  color:white;
+  outline-color:var(--pink);
+  resize:vertical;
+}
+.message { text-align:left; }
+.message p { max-width:none; }
+.footer {
+  font-size:.8rem;
+  color:var(--muted);
+  margin-top:25px;
+}
+
+/* Party effects */
+.party-balloon {
+  position:absolute;
+  bottom:-150px;
+  width:42px;
+  height:54px;
+  border-radius:50% 50% 45% 45%;
+  background:var(--balloon);
+  box-shadow:inset -7px -5px 0 #00000015,0 0 18px #ffffff22;
+  animation:balloonUp var(--duration) linear forwards;
+}
+.party-balloon:before {
+  content:"";
+  position:absolute;
+  bottom:-7px;
+  left:16px;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:9px solid var(--balloon);
+}
+.party-balloon:after {
+  content:"";
+  position:absolute;
+  top:57px;
+  left:21px;
+  height:48px;
+  border-left:1px solid #ffffff88;
+}
+@keyframes balloonUp {
+  0% { transform:translateY(0) rotate(-8deg); opacity:0; }
+  8% { opacity:1; }
+  50% { transform:translateY(-55vh) translateX(28px) rotate(8deg); }
+  100% { transform:translateY(-125vh) translateX(-22px) rotate(-8deg); opacity:.9; }
+}
+.party-heart {
+  position:absolute;
+  bottom:-60px;
+  font-size:25px;
+  animation:heartUp var(--duration) ease-out forwards;
+}
+@keyframes heartUp {
+  0% { transform:translateY(0) scale(.4); opacity:0; }
+  15% { opacity:1; }
+  100% { transform:translateY(-110vh) scale(1.5) rotate(35deg); opacity:0; }
+}
+.confetti {
+  position:absolute;
+  top:-20px;
+  width:9px;
+  height:15px;
+  background:var(--confetti);
+  border-radius:2px;
+  animation:confettiFall var(--duration) ease-in forwards;
+}
+@keyframes confettiFall {
+  0% { transform:translateY(-5vh) rotate(0); opacity:1; }
+  100% { transform:translateY(110vh) rotate(900deg); opacity:0; }
+}
+.boom-title { animation:boomTitle .8s ease both; }
+@keyframes boomTitle {
+  0% { transform:scale(.4); opacity:0; }
+  65% { transform:scale(1.08); opacity:1; }
+  100% { transform:scale(1); opacity:1; }
+}
+@media(max-width:480px) {
+  .slide { padding:78px 15px 28px; }
+  .card { padding:20px 16px; }
+  .polaroid img { height:155px; }
+  .cats { gap:28px; }
+  .cat { transform:scale(.9); }
+  .cake { transform:scale(.92); margin:5px auto 12px; }
+  .birthday-scene { gap:15px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+}
+</style>
+</head>
+
+<body>
+<div id="hearts"></div>
+<div id="partyLayer"></div>
+<div class="progress" id="progress"></div>
+
+<button class="music" id="musicBtn" type="button">♫ Music: Off</button>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+<main>
+
+<!-- 1. Welcome -->
+<section class="slide active">
+  <div class="content">
+    <span class="heart-big">💗</span>
+    <div class="tag">A LITTLE SURPRISE FOR YOU</div>
+    <h1 class="glow">Hey, Madem Ji! 🎀</h1>
+    <p>Someone has prepared something special just for you.</p>
+    <p class="subtitle">A little website, a lot of feelings, and lovely memories.</p>
+    <div class="btnrow">
+      <button class="btn primary" onclick="nextSlide()">Open Your Surprise ✨</button>
+    </div>
+    <p class="small">Made with care, just for you.</p>
+  </div>
+</section>
+
+<!-- 2. Question -->
+<section class="slide">
+  <div class="content">
+    <div class="tag">IMPORTANT QUESTION 👀</div>
+    <h2>Do you know how special you are?</h2>
+    <p>Think carefully before answering, Madem Ji. Hehe! 💕</p>
+    <div id="choiceArea">
+      <button class="btn primary" onclick="sayYes()">Yes, I know! 💖</button>
+      <button class="btn secondary" id="noBtn">No 🙈</button>
+    </div>
+    <p id="choiceMessage" class="subtitle"></p>
+    <button class="btn primary hidden" id="choiceContinue" onclick="nextSlide()">Continue 💌</button>
+  </div>
+</section>
+
+<!-- 3. Reminder -->
+<section class="slide">
+  <div class="content">
+    <span class="heart-big">🌷</span>
+    <div class="tag">A LITTLE REMINDER</div>
+    <h2>You deserve beautiful things.</h2>
+    <div class="card">
+      <p>Your smile, your little habits, your personality, and the way you make ordinary moments feel special — all of it deserves appreciation.</p>
+      <p>May your days be full of happiness, kindness, and lovely memories.</p>
+    </div>
+    <button class="btn primary" onclick="nextSlide()">There's more for you 💗</button>
+  </div>
+</section>
+
+<!-- 4. Letter -->
+<section class="slide">
+  <div class="content">
+    <div class="tag">A LETTER FOR YOU 💌</div>
+    <h2>Dear Madem Ji,</h2>
+    <div class="card">
+      <p>Some people make life a little brighter without even trying.</p>
+      <p>This little corner of the internet is my way of celebrating you, your memories, and the happiness you bring to people around you.</p>
+      <p>I hope this new year of your life brings you peaceful days, genuine smiles, exciting adventures, and countless reasons to feel proud of yourself.</p>
+      <p>Keep being wonderfully you. 🌸</p>
+    </div>
+    <button class="btn primary" onclick="nextSlide()">Your memories are next 📸</button>
+  </div>
+</section>
+
+<!-- 5. Photos -->
+<section class="slide">
+  <div class="content">
+    <div class="tag">YOUR LITTLE SCRAPBOOK 📸</div>
+    <h2>Little moments, lovely memories</h2>
+    <p>From little Madem Ji to the person you are today. 🎀</p>
+    <div class="photo-grid">
+      <div class="polaroid"><img src="childhood.jpg" alt="Childhood photo"><p class="caption">Little Madem Ji 🧸</p></div>
+      <div class="polaroid"><img src="photo1.jpg" alt="Photo one"><p class="caption">Simply lovely 🌷</p></div>
+      <div class="polaroid"><img src="photo2.jpg" alt="Photo two"><p class="caption">A little sunshine ☀️</p></div>
+      <div class="polaroid"><img src="photo3.jpg" alt="Photo three"><p class="caption">One of a kind 💗</p></div>
+    </div>
+    <p class="small">Every picture has its own little story.</p>
+    <button class="btn primary" onclick="nextSlide()">One more memory 🎬</button>
+  </div>
+</section>
+
+<!-- 6. Video -->
+<section class="slide">
+  <div class="content">
+    <div class="tag">A MEMORY OF US 🎞️</div>
+    <h2>Our little moment ❤️</h2>
+    <p>Some memories are even more special when you can watch them again.</p>
+    <div class="video-frame">
+      <video id="ourVideo" controls playsinline preload="metadata" muted>
+        <source src="our-video.mp4" type="video/mp4">
+        Your browser does not support this video.
+      </video>
+      <p class="video-caption">A little memory, just for us ✨</p>
+    </div>
+    <p id="videoNote" class="note">The video will try to play automatically. Tap the sound button to hear it.</p>
+    <button class="btn secondary" id="unmuteVideo" onclick="enableVideoSound()">🔊 Turn video sound on</button>
+    <div class="btnrow">
+      <button class="btn primary" onclick="nextSlide()">Meet your tiny fans 🐾</button>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cats -->
+<section class="slide">
+  <div class="content">
+    <div class="tag">CAT DELIVERY SERVICE 🐾</div>
+    <h2>Special delivery for Madem Ji!</h2>
+    <div class="cats">
+      <div class="cat">
+        <div class="ear left"></div><div class="ear right"></div>
+        <div class="eye left"></div><div class="eye right"></div>
+        <div class="nose"></div><div class="mouth"></div>
+        <div class="whiskers"></div><div class="whiskers right"></div>
+        <div class="bow">🎀</div>
+      </div>
+      <div class="cat pink">
+        <div class="ear left"></div><div class="ear right"></div>
+        <div class="eye left"></div><div class="eye right"></div>
+        <div class="nose"></div><div class="mouth"></div>
+        <div class="whiskers"></div><div class="whiskers right"></div>
+      </div>
+    </div>
+    <div class="card">
+      <p>Meow! We have an important message.</p>
+      <p>Don't forget to smile today. You're the main character of your own story!</p>
+      <p>These tiny cats have brought you a little bit of love. 🐾</p>
+    </div>
+    <button class="btn primary" onclick="nextSlide()">Your birthday cake is ready 🎂</button>
+  </div>
+</section>
+
+<!-- 8. Birthday cake -->
+<section class="slide">
+  <div class="content">
+    <div class="tag">THE BIRTHDAY MOMENT 🎂</div>
+    <h2>Make a wish, Brownie! 💗</h2>
+    <p>Three tiny friends are here for your special day! 🎀</p>
+
+    <div class="birthday-scene">
+      <div class="birthday-pet cat-pet"><span>🐱</span><small>Cutie Cat</small></div>
+      <div class="birthday-pet panda-pet"><span>🐼</span><small>Baby Panda</small></div>
+      <div class="birthday-pet dog-pet"><span>🐶</span><small>Cutie Dog</small></div>
+    </div>
+
+    <div class="countdown" id="countdown">5</div>
+
+    <div class="cake">
+      <div class="candle">
+        <div class="flame" id="flame"></div>
+      </div>
+      <div class="cakebase"></div>
+      <div class="cake-plate"></div>
+    </div>
+
+    <p id="cakeMessage">Brownie, ready ho ja apni birthday magic ke liye! ✨</p>
+
+    <button class="btn primary" id="blowBtn" disabled onclick="blowCandle()">
+      💨 Blow the Candle!
+    </button>
+
+    <p class="small">Make a wish, then blow the candle! 🎀</p>
+  </div>
+</section>
+
+<!-- 9. Personal message -->
+<section class="slide" id="personalSlide">
+  <div class="content">
+    <span class="heart-big">💗</span>
+    <div class="tag">EK BAAT SUN NA 💌</div>
+    <h2 class="boom-title">Princyy, ek baat bolu? 🥹</h2>
+
+    <div class="card message">
+      <p>Pata hai Princyy, tere se baat karke mood kitna achha ho jaata hai? 😂❤️ Tu shayad notice bhi nahi karti, but tu mere liye kaafi special hai.</p>
+
+      <p>Teri chhoti-chhoti baatein, teri smile aur tere saath wali bakchodi 😂 sab achhi lagti hai. Tujhe pareshan karna alag hi fun hai, aur tu gussa hoti hai toh aur hasi aati hai. 🙈💗</p>
+
+      <p>Bas aise hi rehna, zyada change mat hona. Apne dreams poore karna aur khud ko kabhi kam mat samajhna. Tu khush rahe, bas yahi chahta hoon. 🫶</p>
+
+      <p>Aur haan, itni mehnat se website banayi hai maine 😂 Ab gift pasand aaye ya nahi, woh toh bata dena, par ek smile toh banti hai boss! 🎀</p>
+
+      <p>Happy Birthday, Princyy! ❤️ Teri life mein dher saari happiness aaye, tu hamesha hasti rahe aur tere saare wishes poore hon. Aur haan, treat dena mat bhoolna! 😂🎂💗</p>
+    </div>
+
+    <button class="btn primary" onclick="nextSlide()">Abhi ek surprise aur hai 👀💗</button>
+  </div>
+</section>
+
+<!-- 10. Wish box -->
+<section class="slide">
+  <div class="content">
+    <span class="heart-big">🌠</span>
+    <div class="tag">A LITTLE WISH BOX</div>
+    <h2>Make a birthday wish</h2>
+    <p>Close your eyes for a moment and think of something your heart truly wishes for.</p>
+    <div class="card">
+      <textarea id="wishInput" placeholder="Write your birthday wish here... ✨"></textarea>
+      <button class="btn primary" onclick="saveWish()">Keep My Wish 💖</button>
+      <p id="wishMessage" class="subtitle"></p>
+    </div>
+    <p class="small">Your wish stays on this page; it isn't sent anywhere.</p>
+    <button class="btn primary" onclick="nextSlide()">Last wala message... 💌</button>
+  </div>
+</section>
+
+<!-- 11. Final message -->
+<section class="slide">
+  <div class="content">
+    <div class="tag">LAST WALA MESSAGE ❤️</div>
+    <h2>For Princyy, with love 🎀</h2>
+
+    <div class="card message">
+      <p>Princyy, Happy Birthday once again! 🥹❤️ Aaj tera day hai, toh full enjoy karna, khoob hasna aur cake mere bina hi mat khatam kar dena 😂🎂</p>
+
+      <p>Honestly, tere se baat karke achha lagta hai. Kabhi hasi-mazaak, kabhi faltu ki baatein, aur kabhi bas aise hi baat karna. Pata nahi tujhe kaisa lagta hai, but mere liye ye moments kaafi special hain. 💗</p>
+
+      <p>I hope teri life mein sab achha ho, tere dreams poore hon aur tujhe hamesha aise log milein jo tujhe genuinely khush rakhein. Aur jab kabhi mood off ho, toh yaad rakhna ki smile karne ki wajah abhi bhi bahut saari hain. 🫶✨</p>
+
+      <p>Bas yaar, zyada emotional nahi karunga 😂 Ye website banane ka idea aaya toh socha tere liye kuch alag sa karte hain. I hope tujhe pasand aaye. ❤️</p>
+
+      <p>Khush reh, apna khayal rakh aur haan, mujhe bhool mat jaana! 😂💗 Happy Birthday, Princyy! 🎀🎂</p>
+    </div>
+
+    <span class="heart-big">💖</span>
+    <h2>Happy Birthday, Princyy!</h2>
+    <p>Keep smiling, keep shining. 💗✨</p>
+    <p class="footer">Made with care, just for you 🎀</p>
+    <button class="btn secondary" onclick="restartWebsite()">Watch Again ↻</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+const slides = [...document.querySelectorAll(".slide")];
+const progress = document.getElementById("progress");
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+const video = document.getElementById("ourVideo");
+const partyLayer = document.getElementById("partyLayer");
+
+let currentSlide = 0;
+let noMoves = 0;
+let cakeTimer = null;
+let cakeStarted = false;
+let celebrationStarted = false;
+let partyTimers = [];
+let partyCleanupTimers = [];
+let transitionTimer = null;
+
+function updateProgress() {
+  progress.style.width = ((currentSlide + 1) / slides.length * 100) + "%";
+}
+
+function showSlide(index) {
+  if (index < 0 || index >= slides.length) return;
+
+  if (currentSlide === 5 && index !== 5) video.pause();
+
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
+
+  currentSlide = index;
+  updateProgress();
+  window.scrollTo({ top:0, behavior:"smooth" });
+
+  if (index === 5) playMemoryVideo();
+
+  if (index === 7 && !cakeStarted && !celebrationStarted) {
+    startCakeCountdown();
+  }
+}
+
+function nextSlide() {
+  if (currentSlide === 0 && !music.dataset.started) {
+    music.play().then(() => {
+      musicBtn.textContent = "♫ Music: On";
+      music.dataset.started = "yes";
+    }).catch(() => {
+      musicBtn.textContent = "♫ Tap for Music";
+    });
+  }
+
+  if (currentSlide < slides.length - 1) {
+    showSlide(currentSlide + 1);
+  }
+}
+
+/* Music */
+musicBtn.addEventListener("click", () => {
+  if (music.paused) {
+    music.play().then(() => {
+      musicBtn.textContent = "♫ Music: On";
+      music.dataset.started = "yes";
+    }).catch(() => {
+      musicBtn.textContent = "♫ Music unavailable";
+    });
+  } else {
+    music.pause();
+    musicBtn.textContent = "♫ Music: Off";
+  }
+});
+
+/* Video */
+function playMemoryVideo() {
+  video.muted = true;
+  video.currentTime = 0;
+
+  video.play().catch(() => {
+    document.getElementById("videoNote").textContent =
+      "Tap Play on the video if it doesn't start automatically.";
+  });
+}
+
+function enableVideoSound() {
+  video.muted = false;
+
+  video.play().then(() => {
+    document.getElementById("videoNote").textContent =
+      "Enjoy your memory together ❤️";
+    document.getElementById("unmuteVideo").textContent = "🔊 Sound On";
+  }).catch(() => {
+    document.getElementById("videoNote").textContent =
+      "Tap Play on the video, then turn its sound on.";
+  });
+}
+
+/* Question */
+function sayYes() {
+  document.getElementById("choiceMessage").textContent =
+    "Good! Because you really are special. 💗";
+
+  document.getElementById("choiceContinue").classList.remove("hidden");
+}
+
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("pointerenter", moveNo);
+noBtn.addEventListener("click", moveNo);
+
+function moveNo() {
+  noMoves++;
+
+  const area = document.getElementById("choiceArea");
+  const button = document.getElementById("noBtn");
+
+  if (noMoves >= 5) {
+    button.textContent = "Okay, Yes! 💗";
+    button.style.position = "relative";
+    button.style.left = "";
+    button.style.top = "";
+
+    button.removeEventListener("pointerenter", moveNo);
+    button.removeEventListener("click", moveNo);
+    button.addEventListener("click", sayYes);
+    return;
+  }
+
+  const maxX = Math.max(0, area.clientWidth - button.offsetWidth);
+  button.style.position = "absolute";
+  button.style.left = Math.random() * maxX + "px";
+  button.style.top = Math.random() * 45 + "px";
+}
+
+/* Cake countdown */
+function startCakeCountdown() {
+  clearInterval(cakeTimer);
+
+  cakeStarted = true;
+  let seconds = 5;
+
+  document.getElementById("countdown").textContent = seconds;
+  document.getElementById("flame").classList.remove("off");
+  document.getElementById("blowBtn").disabled = true;
+  document.getElementById("blowBtn").textContent = "💨 Blow the Candle!";
+  document.getElementById("cakeMessage").textContent =
+    "Brownie, ready ho ja apni birthday magic ke liye! ✨";
+
+  cakeTimer = setInterval(() => {
+    seconds--;
+
+    if (seconds > 0) {
+      document.getElementById("countdown").textContent = seconds;
+    } else {
+      clearInterval(cakeTimer);
+      cakeTimer = null;
+
+      document.getElementById("countdown").textContent = "🎉";
+      document.getElementById("cakeMessage").textContent =
+        "Chal Brownie, wish maang aur candle blow kar! 💗";
+
+      document.getElementById("blowBtn").disabled = false;
+    }
+  }, 1000);
+}
+
+/* Candle blow */
+function blowCandle() {
+  const flame = document.getElementById("flame");
+  const button = document.getElementById("blowBtn");
+
+  if (!cakeStarted || celebrationStarted || button.disabled) return;
+
+  celebrationStarted = true;
+  clearInterval(cakeTimer);
+  cakeTimer = null;
+
+  flame.classList.add("off");
+  button.disabled = true;
+  button.textContent = "🎉 Birthday Party!";
+
+  document.getElementById("cakeMessage").textContent =
+    "HAPPY BIRTHDAY, PRINCYY!! 🎂💗";
+
+  birthdayBoom();
+
+  transitionTimer = setTimeout(() => {
+    showSlide(8);
+    transitionTimer = null;
+  }, 2800);
+}
+
+/* Party celebration */
+function birthdayBoom() {
+  clearPartyEffects();
+
+  const colors = [
+    "#ff8eb8","#ffcf70","#c6a8ff",
+    "#91e6d3","#ff719d"
+  ];
+
+  const hearts = ["💗","💖","💕","♡","✨","♥"];
+
+  function addLater(callback, delay) {
+    const timer = setTimeout(callback, delay);
+    partyTimers.push(timer);
+  }
+
+  for (let i = 0; i < 24; i++) {
+    addLater(() => {
+      const balloon = document.createElement("div");
+      balloon.className = "party-balloon";
+      balloon.style.left = Math.random() * 96 + "%";
+      balloon.style.setProperty(
+        "--balloon",
+        colors[Math.floor(Math.random() * colors.length)]
+      );
+      balloon.style.setProperty(
+        "--duration",
+        (5 + Math.random() * 4) + "s"
+      );
+      partyLayer.appendChild(balloon);
+
+      const cleanup = setTimeout(() => balloon.remove(), 10000);
+      partyCleanupTimers.push(cleanup);
+    }, i * 100);
+  }
+
+  for (let i = 0; i < 35; i++) {
+    addLater(() => {
+      const heart = document.createElement("span");
+      heart.className = "party-heart";
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * 96 + "%";
+      heart.style.setProperty(
+        "--duration",
+        (3 + Math.random() * 4) + "s"
+      );
+      partyLayer.appendChild(heart);
+
+      const cleanup = setTimeout(() => heart.remove(), 8000);
+      partyCleanupTimers.push(cleanup);
+    }, i * 70);
+  }
+
+  for (let i = 0; i < 90; i++) {
+    addLater(() => {
+      const piece = document.createElement("span");
+      piece.className = "confetti";
+      piece.style.left = Math.random() * 100 + "%";
+      piece.style.setProperty(
+        "--confetti",
+        colors[Math.floor(Math.random() * colors.length)]
+      );
+      piece.style.setProperty(
+        "--duration",
+        (2.5 + Math.random() * 3) + "s"
+      );
+      partyLayer.appendChild(piece);
+
+      const cleanup = setTimeout(() => piece.remove(), 6000);
+      partyCleanupTimers.push(cleanup);
+    }, Math.random() * 1200);
+  }
+}
+
+function clearPartyEffects() {
+  partyTimers.forEach(clearTimeout);
+  partyCleanupTimers.forEach(clearTimeout);
+
+  partyTimers = [];
+  partyCleanupTimers = [];
+  partyLayer.innerHTML = "";
+}
+
+/* Birthday wish */
+function saveWish() {
+  const wish = document.getElementById("wishInput").value.trim();
+
+  document.getElementById("wishMessage").textContent = wish
+    ? "Your wish is safe in this moment. Keep believing in yourself. 💖"
+    : "Write a little wish first. ✨";
+}
+
+/* Floating hearts */
+function createHeart() {
+  const heart = document.createElement("span");
+  heart.className = "party-heart";
+  heart.textContent = ["♥","♡","✧","❤"][
+    Math.floor(Math.random() * 4)
+  ];
+
+  heart.style.left = Math.random() * 100 + "%";
+  heart.style.setProperty(
+    "--duration",
+    (5 + Math.random() * 6) + "s"
+  );
+
+  document.getElementById("hearts").appendChild(heart);
+  setTimeout(() => heart.remove(), 12000);
+}
+
+setInterval(createHeart, 1100);
+
+/* Watch again */
+function restartWebsite() {
+  clearInterval(cakeTimer);
+  cakeTimer = null;
+
+  if (transitionTimer !== null) {
+    clearTimeout(transitionTimer);
+    transitionTimer = null;
+  }
+
+  clearPartyEffects();
+
+  cakeStarted = false;
+  celebrationStarted = false;
+  noMoves = 0;
+
+  video.pause();
+  video.currentTime = 0;
+  video.muted = true;
+
+  document.getElementById("videoNote").textContent =
+    "The video will try to play automatically. Tap the sound button to hear it.";
+
+  document.getElementById("unmuteVideo").textContent =
+    "🔊 Turn video sound on";
+
+  document.getElementById("countdown").textContent = "5";
+  document.getElementById("flame").classList.remove("off");
+
+  const blowBtn = document.getElementById("blowBtn");
+  blowBtn.disabled = true;
+  blowBtn.textContent = "💨 Blow the Candle!";
+
+  document.getElementById("cakeMessage").textContent =
+    "Brownie, ready ho ja apni birthday magic ke liye! ✨";
+
+  document.getElementById("wishInput").value = "";
+  document.getElementById("wishMessage").textContent = "";
+  document.getElementById("choiceMessage").textContent = "";
+  document.getElementById("choiceContinue").classList.add("hidden");
+
+  const oldButton = document.getElementById("noBtn");
+  const newButton = oldButton.cloneNode(true);
+  oldButton.replaceWith(newButton);
+
+  newButton.addEventListener("pointerenter", moveNo);
+  newButton.addEventListener("click", moveNo);
+
+  showSlide(0);
+}
+
+updateProgress();
+</script>
+</body>
+</html>
